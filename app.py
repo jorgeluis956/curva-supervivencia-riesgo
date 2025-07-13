@@ -30,7 +30,7 @@ if "reset" not in st.session_state:
 
 if st.button("🔁 Reiniciar entrada de datos"):
     st.session_state["reset"] = True
-    st.experimental_rerun()
+    st.rerun()
 
 # Entrada de fechas
 st.subheader("📅 Fechas de eventos")
