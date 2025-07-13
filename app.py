@@ -4,11 +4,21 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from datetime import datetime
+from io import BytesIO
+from matplotlib.backends.backend_pdf import PdfPages
 
 st.set_page_config(page_title="Curva de Supervivencia de Eventos de Riesgo", layout="centered")
 
 st.title("🛡️ Curva de Supervivencia: Eventos de Riesgo Extremo")
-st.write("Introduce fechas de eventos (estrés o violencia) para visualizar cómo evoluciona el riesgo a lo largo del tiempo.")
+st.markdown("<p style='font-size: 10px;'>Esta herramienta fue desarrollada por Jorge Luis Sierra como parte del proyecto Salama. Está basada en la metodología de Barranco-Chamorro y Gulati (2015) para predecir la supervivencia ante eventos de alto riesgo. <br><br>Referencia: Barranco-Chamorro, I., & Gulati, S. (2015). Some estimation techniques in reliability and survival analysis based on record-breaking data. In C. P. Kitsos et al. (Eds.), <i>Theory and practice of risk assessment</i> (Vol. 136, pp. 3...
+
+# Estado para reinicio
+if "reset" not in st.session_state:
+    st.session_state["reset"] = False
+
+if st.button("🔁 Reiniciar entrada de datos"):
+    st.session_state["reset"] = True
+    st.experimental_rerun()
 
 # Entrada de fechas
 st.subheader("📅 Fechas de eventos")
@@ -16,12 +26,9 @@ event_input = st.text_area("Introduce una fecha por línea (ejemplo: 2012-07)", 
 
 if event_input:
     try:
-        # Convertir texto a lista de fechas
         fechas = [datetime.strptime(line.strip(), "%Y-%m") for line in event_input.splitlines() if line.strip()]
         fechas.sort()
         etiquetas = [fecha.strftime("%Y (%b)") for fecha in fechas]
-
-        # Calcular intervalos en meses
         meses = [(fechas[i] - fechas[0]).days // 30 for i in range(len(fechas))]
         survival_probability = 1 - (np.arange(1, len(meses) + 1) / len(meses))
 
@@ -40,7 +47,15 @@ if event_input:
         ax.grid(True)
         st.pyplot(fig)
 
-        # Explicación automática
+        # Botón para exportar PDF
+        st.subheader("📄 Descargar resultado en PDF")
+        pdf_buffer = BytesIO()
+        with PdfPages(pdf_buffer) as pdf:
+            pdf.savefig(fig, bbox_inches='tight')
+        pdf_buffer.seek(0)
+        st.download_button("📥 Descargar curva en PDF", data=pdf_buffer, file_name="Curva_Supervivencia.pdf", mime="application/pdf")
+
+        # Interpretación automática
         st.subheader("📘 Interpretación automática")
         st.write(f"Se han identificado **{len(fechas)} eventos**. La curva muestra cómo la probabilidad de no ocurrencia disminuye a medida que los eventos se vuelven más frecuentes.")
         if len(fechas) > 1:
