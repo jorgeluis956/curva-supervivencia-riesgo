@@ -10,7 +10,19 @@ from matplotlib.backends.backend_pdf import PdfPages
 st.set_page_config(page_title="Curva de Supervivencia de Eventos de Riesgo", layout="centered")
 
 st.title("🛡️ Curva de Supervivencia: Eventos de Riesgo Extremo")
-st.markdown("<p style='font-size: 10px;'>Esta herramienta fue desarrollada por Jorge Luis Sierra como parte del proyecto Salama. Está basada en la metodología de Barranco-Chamorro y Gulati (2015) para predecir la supervivencia ante eventos de alto riesgo. <br><br>Referencia: Barranco-Chamorro, I., & Gulati, S. (2015). Some estimation techniques in reliability and survival analysis based on record-breaking data. In C. P. Kitsos et al. (Eds.), <i>Theory and practice of risk assessment</i> (Vol. 136, pp. 3...
+st.markdown(
+    (
+        "<p style='font-size: 10px;'>"
+        "Esta herramienta fue desarrollada por Jorge Luis Sierra como parte del proyecto Salama. "
+        "Está basada en la metodología de Barranco-Chamorro y Gulati (2015) para predecir la supervivencia ante eventos de alto riesgo."
+        "<br><br>"
+        "Referencia: Barranco-Chamorro, I., & Gulati, S. (2015). Some estimation techniques in reliability and survival analysis based on record-breaking data. "
+        "In C. P. Kitsos et al. (Eds.), <i>Theory and practice of risk assessment</i> (Vol. 136, pp. 333–348). Springer. "
+        "<a href='https://doi.org/10.1007/978-3-319-18029-8_25' target='_blank'>https://doi.org/10.1007/978-3-319-18029-8_25</a>"
+        "</p>"
+    ),
+    unsafe_allow_html=True
+)
 
 # Estado para reinicio
 if "reset" not in st.session_state:
