@@ -16,7 +16,7 @@ st.markdown(
         "<p style='font-size: 10px;'>"
         "Esta herramienta está desarrollada por Jorge Luis Sierra como parte de un proyecto general de usar la tecnología para mejorar la postura de seguridad de periodistas y personas defensoras llamado Proyecto Salama."
         "Para usar esta herramienta, reúne primero la fecha (año-mes) de eventos de agresión grave a periodistas y luego los colocas en el cuadro."
-        "Al darle Enter, obtendrás un análisis automatiszado de las probabilidades de ocurrencia en el tiempo de ataques similares."
+        "Al darle Enter, obtendrás un análisis automatizado de las probabilidades de ocurrencia en el tiempo de ataques similares."
         "La herramienta está inspirada en el trabajo de Barranco-Chamorro y Gulati (2015) para predecir la supervivencia ante eventos de alto riesgo."
         "<br><br>"
         "Referencia: Barranco-Chamorro, I., & Gulati, S. (2015). Some estimation techniques in reliability and survival analysis based on record-breaking data. "
