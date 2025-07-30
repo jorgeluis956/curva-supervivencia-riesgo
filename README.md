@@ -64,6 +64,6 @@ Esta herramienta está inspirada en las técnicas descritas por:
 
 > Barranco-Chamorro, I., & Gulati, S. (2015). *Some estimation techniques in reliability and survival analysis based on record-breaking data.* In C. P. Kitsos et al. (Eds.), *Theory and practice of risk assessment* (Vol. 136, pp. 333–348). Springer. https://doi.org/10.1007/978-3-319-18029-8_25
 
-Desarrollada por **Jorge Luis Sierra**.
+Desarrollada por **Jorge Luis Sierra con ayuda de ChatGPT**.
 
 ---
